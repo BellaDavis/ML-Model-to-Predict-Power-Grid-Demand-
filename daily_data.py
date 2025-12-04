@@ -30,7 +30,8 @@ df = pd.concat(df_list, ignore_index=True)
 # 2. Select relevant columns
 
 
-features = ['Date', 'DT', 'Energy', 'Peak_Demand', 'Peak_Hour', 'Peak_DB', 'Peak_WTHI', 'Min_Demand']
+features = ['Date', 'DT', 'Energy', 'Peak_Demand', 'Peak_Hour', 'Peak_DB', 'Peak_DP', 'Peak_WTHI', 'Min_Demand']
+
 
 
 
