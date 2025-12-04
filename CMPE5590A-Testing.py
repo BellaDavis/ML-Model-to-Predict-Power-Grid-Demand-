@@ -69,21 +69,6 @@ def predict(df, input):
         df['Day']   = df['Date'].dt.day
 
         df = df.drop(columns=['Date'])
-        # cols = ['Hr_End']
-        # data.loc[:, cols] = data[cols].astype(int)
-
-
-        # # Create the DateTime Index
-        # def create_datetime(row):
-
-        #     dt = pd.to_datetime(row['Date']) + pd.Timedelta(hours=row['Hr_End'])
-        #     # Correct for hour ending 24
-        #     if row['Hr_End'] == 24:
-        #         return dt - pd.Timedelta(hours=1)
-        #     return dt
-
-
-        # data.loc[:, 'DateTime'] = data.apply(create_datetime, axis=1)
     X = df.drop(columns=[target])
     y = df[target]
     # 6. Split into training and testing data
@@ -106,10 +91,11 @@ def predict(df, input):
     # 10. Optionally, show sample predictions
     results = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred, 'error': y_test - y_pred})
     print(results.head(10))
+    return X_train, X_test, y_train, y_test, y_pred
 
-predict(df_monthly, True)
+X_train_monthly, X_test_monthly, y_train_monthly, y_test_monthly, y_pred_monthly = predict(df_monthly, True)
 
-predict(df_hourly, False)
+X_train_hourly, X_test_hourly, y_train_hourly, y_test_hourly, y_pred_hourly = predict(df_hourly, False)
 
 # cdd = df[['CDD']]
 # Peak_Hours = df[['Peak_Hour']]
